@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Finds the cheapest price to the closest Chipotle via Uber">
+<meta name="keywords" content="Chipotle, Uber, Uber2Chipotle, Food, Delivery, Burrito, Black Car">
+<meta name="author" content="Thomas Knickman">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- SITE TITLE -->
+<title>Uber2Chipotle</title>
+
+<!-- =========================
+      FAV AND TOUCH ICONS  
+============================== -->
+<link rel="icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+<!-- =========================
+     STYLESHEETS   
+============================== -->
+<!-- BOOTSTRAP -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- FONT ICONS -->
+<link rel="stylesheet" href="assets/elegant-icons/style.css">
+<link rel="stylesheet" href="assets/app-icons/styles.css">
+<!--[if lte IE 7]><script src="lte-ie7.js"></script><![endif]-->
+
+<!-- WEB FONTS -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,300italic' rel='stylesheet' type='text/css'>
+
+<!-- CAROUSEL AND LIGHTBOX -->
+<link rel="stylesheet" href="css/owl.theme.css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+
+<!-- ANIMATIONS -->
+<link rel="stylesheet" href="css/animate.min.css">
+
+<!-- CUSTOM STYLESHEETS -->
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- COLORS -->
+<link rel="stylesheet" href="css/blue.css"> 
+
+<!-- RESPONSIVE FIXES -->
+<link rel="stylesheet" href="css/responsive.css">
+
+
+<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/respond.min.js"></script>
+<![endif]-->
+
+<!-- JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- GOOGLE -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54358767-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+<body>
+<!-- =========================
+     PRE LOADER       
+============================== -->
+<div class="preloader">
+  <div class="status">&nbsp;</div>
+</div>
+
+<!-- =========================
+     HEADER   
+============================== -->
+<header class="header" id="home">
+
+<!-- SOLID COLOR BG -->
+<div class="solid-color">
+
+	<!-- STICKY NAVIGATION -->
+	<div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation">
+		<div class="container">
+			<div class="navbar-header">
+				
+				<!-- LOGO ON STICKY NAV BAR -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#kane-navigation">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+
+				<a class="navbar-brand" href="#"><img src="images/logo-black.png" alt=""></a>
+				
+			</div>
+			
+			<!-- NAVIGATION LINKS -->
+			<div class="navbar-collapse collapse" id="kane-navigation">
+				<ul class="nav navbar-nav navbar-right main-navigation">
+					<li><a href="#home">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#testimonials">Testimonials</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li><a href="#social">Social</a></li>
+					
+				</ul>
+			</div>
+		</div> <!-- /END CONTAINER -->
+	</div> <!-- /END STICKY NAVIGATION -->
+	
+	
+	<!-- CONTAINER -->
+	<div class="container">
+		
+		<!-- ONLY LOGO ON HEADER -->
+		<div class="only-logo">
+			<div class="navbar">
+				<div class="navbar-header">
+					<img src="images/logo.png" alt="">
+				</div>
+			</div>
+		</div> <!-- /END ONLY LOGO ON HEADER -->
+		
+		<div class="row" id="geo-status">
+		</div>
+		
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				
+				<!-- HEADING AND BUTTONS -->
+				<div class="intro-section">
+					
+					<!-- WELCOME MESSAGE -->
+					<h1 class="intro">Burritos & Black Cars</h1>
+					<h5>Find the cheapest price to get from A to Burrito with Uber2Chipotle</h5>
+					
+					<!-- INPUT FIELD -->
+					<div class="address-autocomplete-form" id="address-form-latlng">
+						<input id="searchTextField" type="text" size="25">
+					</div>
+					<!-- /END INPUT FIELD -->
+					
+					<!-- BUTTON -->
+					<div class="buttons" id="download-button">
+						<button onclick="startProcess()" class="btn btn-default btn-lg standard-button"></i>Go!</button>
+					</div>
+					<!-- /END BUTTONS -->
+					
+					<!-- LOADING GIF -->
+					<div class="loader" id="ajax">
+						<img src="images/ajax-loader.gif" alt="">
+					</div>
+					<!-- /END LOADING GIF -->
+					
+				</div>
+				<!-- /END HEADNING AND BUTTONS -->
+				
+			</div>
+		</div>
+		<!-- /END ROW -->
+		
+	</div>
+	<!-- /END CONTAINER -->
+</div>
+<!-- /END SOLID COLOR BG -->
+</header>
+<!-- /END HEADER -->
+
+
+<!-- =========================
+     switch input
+============================== -->
+<section class="address-button" id="address-button">
+
+	<div class="address-autocomplete-button" id="address-form-latlng">
+		<button onclick="switchInputMode(0)" class="btn btn-default btn-sm micro-button"></i>Enter Address Manually</button>
+	</div>			
+	
+</section>
+<!-- /END SECTION -->
+
+
+<!-- =========================
+     powered by
+============================== -->
+
+<!-- /END SECTION -->
+
+
+<!-- =========================
+     error
+============================== -->
+<section class="error" id="error">
+	<h2 class="error">
+		<div class="error-container" id="error-container-message">
+		</div>
+	</h2>
+	<button onclick="closeError()" class="btn btn-default btn-sm small-button"></i>Close</button>
+	
+	
+</section>
+<!-- /END SECTION -->
+
+<!-- =========================
+     info
+============================== -->
+<section class="info" id="info">
+
+<!-- RESULTS CONTAINER -->
+<h1 class="intro">
+	<div class="results-container" id="results-container-price">
+	</div>
+</h1>
+
+<!-- METHODS CONTAINER -->
+
+<div class="results-container" id="results-container-method">
+
+	<!-- Split button -->
+	<div class="btn-group">
+	  <button onclick="selectMethodInfo()" class="btn btn-default method-button"></button>
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	    <span class="caret"></span>
+	    <span class="sr-only">Toggle Dropdown</span>
+	  </button>
+	  <ul class="dropdown-menu" role="menu">
+	  </ul>
+	</div>
+	
+</div>
+
+<!-- MAP CONTAINER -->
+<div class="results-container" id="results-container-map"></div>
+
+
+<div class="container">
+	
+	<!-- SECTION HEADER -->
+	<div class="section-header wow fadeIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+		
+	</div>
+	<!-- /END SECTION HEADER -->
+	
+	<div class="row">
+		
+		<!-- SINGLE SERVICE -->
+		<div class="col-md-4 single-service wow fadeIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+			
+			<!-- SERVICE ICON -->
+			<div class="service-icon">
+				<i class="icon_question_alt2"></i>
+			</div>
+			
+			<!-- SERVICE HEADING -->
+			<h3>What Now?</h3>
+			
+			<!-- SERVICE DESCRIPTION -->
+			<p>
+				 Unfortunately, you still have to use the <a href="http://www.uber.com">Uber</a> app on your smartphone to request a car before you can enjoy your delicious burrito. Uber2Chipotle hasn't been approved to request cars on behalf of users yet. However, our data comes straight from the <a href="https://developer.uber.com">Uber</a> and <a href="https://developers.google.com/maps/">Google</a> API's so you can be sure the estimates are accurate!
+			</p>
+			
+		</div>
+		<!-- /END SINGLE SERVICE -->
+		
+		<!-- SINGLE SERVICE -->
+		<div class="col-md-4 single-service wow fadeIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+			
+			<!-- SERVICE ICON -->
+			<div class="service-icon">
+				<i class="icon_quotations_alt2"></i>
+			</div>
+			
+			<!-- SERVICE HEADING -->
+			<h3>Share With Friends!</h3>
+			
+			<!-- SERVICE DESCRIPTION -->
+			<p>
+				 What's better than Uber and Chipotle? Uber and Chipotle with friends! Share this site with your friends using our <a href="#social">social links</a> below!
+			</p>
+			
+		</div>
+		<!-- /END SINGLE SERVICE -->
+		
+		<!-- SINGLE SERVICE -->
+		<div class="col-md-4 single-service wow fadeIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+			
+			<!-- SERVICE ICON -->
+			<div class="service-icon">
+				<i class="icon_menu-circle_alt2"></i>
+			</div>
+			
+			<!-- SERVICE HEADING -->
+			<h3>Contact Us!</h3>
+			
+			<!-- SERVICE DESCRIPTION -->
+			<p>
+				 We would love to hear how many burritos you've eaten because you found out how cheap and easy it was to get to Chipotle via Uber and Uber2Chipotle. Drop us a message <a href="#contact">below</a>, or <a href="#social">connect</a> with us on social media!
+			</p>
+			
+		</div>
+		<!-- /END SINGLE SERVICE -->
+		
+	</div>
+	<!-- /END ROW -->
+	
+</div>
+<!-- /END CONTAINER -->
+
+</section>
+<!-- /END FEATURES SECTION -->
+
+
+
+<!-- =========================
+     BRIEF RIGHT SECTION 
+============================== -->
+<section class="app-brief" id="about">
+
+<div class="container">
+	
+	<div class="row">
+		
+		<!-- BRIEF -->
+		<div class="col-md-6 left-align wow fadeInLeft animated" data-wow-offset="10" data-wow-duration="1.5s">
+			
+			<!-- SECTION TITLE -->
+			<h2 class="dark-text">About Us</h2>
+			
+			<div class="colored-line-left">
+			</div>
+			
+			<p>
+				Uber2Chipotle was founded by one person with a very strong love of Uber and Chipotle. Now, with Uber2Chipotle, finding the nearest Burrito is easier than ever. 
+			</p>
+			
+		</div>
+		<!-- /ENDBRIEF -->
+		
+		<!-- PHONES IMAGE -->
+		<div class="col-md-6 wow fadeInRight animated" data-wow-offset="10" data-wow-duration="1.5s">
+			<div class="phone-image">
+				<img src="images/chipotle-burrito.png" alt="">
+			</div>
+		</div>
+		<!-- /END PHONES IMAGE -->
+		
+	</div>
+	<!-- /END ROW -->
+	
+</div>
+<!-- /END CONTAINER -->
+
+</section>
+<!-- /END SECTION -->
+
+
+
+<!-- =========================
+     TESTIMONIALS 
+============================== -->
+<section class="testimonials" id="testimonials">
+
+<div class="solid-color">
+	
+	<div class="container wow fadeIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+		
+		<!-- FEEDBACKS -->
+		<div id="feedbacks" class="owl-carousel owl-theme">
+			
+			<!-- SINGLE FEEDBACK -->
+			<div class="feedback">
+				
+				<div class="message">
+					 Before, I couldn't get chipotle because I don't have a car. But now, thanks to Uber2Chipotle.com, I know exactly how much It will cost to get from my current location to the closet Chipotle!
+				</div>
+				
+				<div class="white-line">
+				</div>
+				
+				<!-- INFORMATION -->
+				<div class="name">
+					B. U. Rrito
+				</div>
+				<div class="company-info">
+					SF, CA
+				</div>
+				
+			</div>
+			<!-- /END SINGLE FEEDBACK -->
+			
+		</div>
+		<!-- /END FEEDBACKS -->
+		
+	</div>
+	<!-- /END CONTAINER -->
+	
+</div>
+<!-- /END COLOR OVERLAY -->
+
+</section>
+<!-- /END TESTIMONIALS SECTION -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     FOOTER 
+============================== -->
+<footer>
+
+<div class="container" id="contact">
+	
+	<div class="contact-box wow rotateIn animated" data-wow-offset="10" data-wow-duration="1.5s">
+		
+		<!-- CONTACT BUTTON TO EXPAND OR COLLAPSE FORM -->
+		
+		<a class="btn contact-button expand-form expanded"><i class="icon_mail_alt"></i></a>
+		
+		<!-- EXPANDED CONTACT FORM -->
+		<div class="row expanded-contact-form">
+			
+			<div class="col-md-8 col-md-offset-2">
+				
+				<!-- FORM -->
+				<form class="contact-form" id="contact" role="form">
+					
+					<!-- IF MAIL SENT SUCCESSFULLY -->
+					<h4 class="success">
+						<i class="icon_check"></i> Your message has been sent successfully.
+					</h4>
+					
+					<!-- IF MAIL SENDING UNSUCCESSFULL -->
+					<h4 class="error-contact">
+						<i class="icon_error-circle_alt"></i> E-mail must be valid and message must be longer than 1 character.
+					</h4>
+					
+					<div class="col-md-6">
+						<input class="form-control input-box" id="name" type="text" name="name" placeholder="Your Name">
+					</div>
+					
+					<div class="col-md-6">
+						<input class="form-control input-box" id="email" type="email" name="email" placeholder="Your Email">
+					</div>
+					
+					<div class="col-md-12">
+						<input class="form-control input-box" id="subject" type="text" name="subject" placeholder="Subject">
+						<textarea class="form-control textarea-box" id="message" rows="8" placeholder="Message"></textarea>
+					</div>
+					
+					<button class="btn btn-primary standard-button2 ladda-button contact-submit" type="submit" id="submit" name="submit" data-style="expand-left">Send Message</button>
+					
+				</form>
+				<!-- /END FORM -->
+				
+			</div>
+			
+		</div>
+		<!-- /END EXPANDED CONTACT FORM -->
+		
+	</div>
+	<!-- /END CONTACT BOX -->
+	
+	<!-- LOGO -->
+	<img src="images/logo-black.png" alt="LOGO" class="responsive-img">
+	
+	<!-- SOCIAL ICONS -->
+	<ul class="social-icons" id="social">
+		<li><a href="https://www.facebook.com/uber2chipotle"><i class="social_facebook_square"></i></a></li>
+		<li><a href="https://twitter.com/home?status=Find%20the%20cheapest%20price%20to%20the%20closest%20Chipotle%20with%20http://www.Uber2Chipotle.com"><i class="social_twitter_square"></i></a></li>
+		<li><a href="https://pinterest.com/pin/create/button/?url=http://www.uber2chipotle.com&media=http://uber2chipotle.com/images/logo-black@2x.png&description=Find%20the%20cheapest%20price%20to%20the%20closest%20Chipotle%20with%20Uber2Chipotle.com"><i class="social_pinterest_square"></i></a></li>
+		<li><a href="https://plus.google.com/share?url=http://www.uber2chipotle.com"><i class="social_googleplus_square"></i></a></li>
+
+
+		
+</a>
+
+	</ul>
+	<section class="powered-by" id="powered-by">
+	Powered By:
+	<div class="img-bucket" id="power-by-img">
+		<a href="https://developers.google.com/maps/"><img src="images/google-logo.png" alt="google api">
+		<a href="https://developer.uber.com"><img src="images/uber-logo.png" alt="uber api">
+	</div>
+	
+	</section>
+	
+	
+	<!-- COPYRIGHT TEXT -->
+	<p class="copyright">
+		©2014 <a href="http://www.thomasknickman.com">Thomas E. Knickman</a>, All Rights Reserved
+		</br>
+		This site is dedicated to <a href="http://www.dotabuff.com/players/66502068">Synchronicity</a>, for all of our great Chipotle runs. 
+	</p>
+		
+	
+
+</div>
+<!-- /END CONTAINER -->
+ 
+</footer>
+<!-- /END FOOTER -->
+
+
+<!-- =========================
+     SCRIPTS 
+============================== -->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.localScroll.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/nivo-lightbox.min.js"></script>
+<script src="js/simple-expand.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/retina-1.1.0.min.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/logic.js"></script>
+
+
+</body>
+</html>

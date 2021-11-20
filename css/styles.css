@@ -1,0 +1,647 @@
+/* =======================================================================
+Kane - Responsive App Landing Page 1.7
+======================================================================= */
+
+/* --------------------------------------
+=========================================
+GLOBAL STYLES
+=========================================
+-----------------------------------------*/
+
+html {
+    font-size: 100%;
+}
+
+body {
+    background: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #313131;
+    line-height: 28px;
+    text-align: center;
+    overflow-x: hidden !important;
+    margin: auto !important;
+}
+
+
+/* Internet Explorer 10 in Windows 8 and Windows Phone 8 Bug fix */
+
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+a {
+    -webkit-transition: all ease 0.25s;
+            transition: all ease 0.25s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn:focus,
+.btn:active {
+    outline: inherit;
+}
+
+
+/* Other fixes*/
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+ul,
+ol {
+    padding-left: 0 !important;
+}
+
+li {
+    list-style: none;
+}
+
+
+/* PRE LOADER */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fefefe;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    overflow: hidden !important;
+}
+
+.status {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-image: url(../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+            background-size: cover;
+    margin: -20px 0 0 -20px;
+}
+
+
+/*---------------------------------------
+   Typography                
+-----------------------------------------*/
+
+/* FONT FACE LOADER */
+@font-face {
+    font-family: 'Lane';
+    src: url('../fonts/lanenar_Lane.eot');
+    src: url('../fonts/lanenar_Lane.eot?#iefix') format('embedded-opentype'), url('../fonts/lanenar_Lane.woff') format('woff'), url('../fonts/lanenar_Lane.ttf') format('truetype'), url('../fonts/lanenar_Lane.svg#Lane') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+ 
+    @font-face {
+        font-family: 'Lane';
+        src: url('../fonts/lanenar_Lane.svg#Lane') format('svg');
+    }
+}
+
+/* HEADINGS */
+
+h1,
+h2 {
+    font-family: 'Lane', sans-serif;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 3.75rem;
+    line-height: 4.688rem;
+}
+
+h2 {
+    font-size: 3.125rem;
+    line-height: 4.063rem;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 300;
+}
+
+h4 {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 300;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+/*---------------------------------------
+   CUSTOM BUTTON              
+-----------------------------------------*/
+
+.standard-button,
+.standard-button2 {
+    font-size: 18px;
+    font-weight: 400 !important;
+    border-radius: 4px !important;
+    text-shadow: 0 !important;
+    color: #ffffff;
+    min-width: 150px;
+    border: none;
+    padding: 16px 25px 16px 25px;
+    margin: 5px;
+    -webkit-transition: all ease 0.25s;
+            transition: all ease 0.25s;
+}
+
+.standard-button:hover,
+.standard-button2:hover {
+    border: none;
+}
+
+.standard-button i,
+.standard-button2 i {
+    vertical-align: inherit;
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.small-button {
+    font-size: 16px;
+    font-weight: 200;
+    border-radius: 4px;
+    text-shadow: 0;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+    -webkit-transition: all ease 0.25s;
+            transition: all ease 0.25s;
+}
+
+.micro-button {
+    font-size: 12px;
+    font-weight: 100;
+    border-radius: 4px;
+    text-shadow: 0;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+    -webkit-transition: all ease 0.25s;
+            transition: all ease 0.25s;
+}
+
+/*---------------------------------------
+   TEXTS               
+-----------------------------------------*/
+
+.white-text {
+    color: #ffffff;
+}
+
+.dark-text {
+    color: #272727;
+}
+
+.grey-bg {
+    background: #F7F8FA !important;
+}
+
+
+/*---------------------------------------
+   SECTIONS          
+-----------------------------------------*/
+
+.section-header {
+    padding-bottom: 78px;
+}
+
+.section-header h2 {
+    margin-bottom: 20px;
+}
+
+.section-header .section-description {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/*---------------------------------------
+   LINES          
+-----------------------------------------*/
+
+.colored-line {
+    margin: auto;
+    z-index: 1;
+    width: 165px;
+    height: 1px;
+}
+
+.white-line {
+    margin: auto;
+    z-index: 1;
+    width: 165px;
+    height: 1px;
+    background: #ffffff;
+}
+
+.colored-line-left {
+    float: left;
+    z-index: 1;
+    display: block;
+    width: 165px;
+    height: 1px;
+}
+
+/*---------------------------------------
+=========================================
+ **   SECTION STYLES                
+=========================================
+-----------------------------------------*/
+
+/*---------------------------------------
+   SECTION:  HOME                 
+-----------------------------------------*/
+
+header .solid-color {
+    min-height: 800px;
+}
+
+header .full-screen {
+    width: 100%;
+    height: 100px;
+}
+
+header .address-autocomplete-form {
+	display: none;
+	margin-top: 25px;
+}
+
+header .loader {
+	display: none;
+	margin-top: 50px;
+}
+
+
+/* TOP BAR WITH NAVIGATION */
+
+.sticky-navigation {
+  min-height: 60px;
+  background: #FFFFFF;
+  border: none;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  -webkit-backface-visibility: hidden;
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);
+          box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);
+}
+
+.sticky-navigation .navbar-header img {
+  max-height: 30px;
+  -webkit-backface-visibility: hidden;
+}
+
+.sticky-navigation .main-navigation .current a {
+  color: #000000 !important;
+  position: relative;
+  outline: none;
+}
+
+.sticky-navigation .main-navigation li a {
+  line-height: 30px;
+  font-weight: 400;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.sticky-navigation .main-navigation li a:hover {
+    color: #000000;
+}
+
+.navbar-inverse .navbar-toggle {
+border-color: #313131;
+background: #313131;
+}
+
+header .only-logo .navbar {
+    background: none;
+    padding: 60px;
+}
+
+header .only-logo .navbar .navbar-header {
+    float: none;
+}
+
+/* INTRO */
+
+header .intro-section {
+    margin: auto;
+}
+
+header .intro-section .intro {
+    color: #ffffff;
+    margin-bottom: 36px;
+}
+
+header .intro-section h5 {
+    color: #ffffff;
+}
+
+header .intro-section .buttons {
+    margin-top: 35px;
+}
+
+/*---------------------------------------
+   SECTION:  TESTIMONIALS                 
+-----------------------------------------*/
+.testimonials {
+    color: #ffffff;
+}
+
+.testimonials .solid-color {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+.testimonials .feedback {
+    max-width: 750px;
+    margin: auto;
+}
+
+.testimonials .feedback .image {
+    font-size: 24px;
+    border: 2px solid transparent;
+    -webkit-box-shadow: 0px 0px 0px 2px #ffffff;
+            box-shadow: 0px 0px 0px 2px #ffffff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin: auto;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.testimonials .feedback .image img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.testimonials .feedback .message {
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.testimonials .feedback .name {
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+.testimonials .feedback .company-info {
+    font-size: 12px;
+}
+
+.testimonials .owl-theme .owl-controls .owl-page span {
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.testimonials .customNavigation a {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/*---------------------------------------
+   SECTION:  BUTTON           
+-----------------------------------------*/
+
+.address-button {
+    height: 50px;
+    background: #2c8ed6;
+}
+
+
+
+/*---------------------------------------
+   SECTION:  ERROR           
+-----------------------------------------*/
+
+.error {
+	display: none;
+    background: #f29791;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+
+.error h2 {
+    font-size: 3.125rem;
+    line-height: 4.063rem;
+    font-family: 'Lane', sans-serif;
+	font-weight: normal;
+}
+
+/*---------------------------------------
+   SECTION:  BRIEF                 
+-----------------------------------------*/
+
+.app-brief {
+    padding-top: 110px;
+    padding-bottom: 60px;
+}
+
+.app-brief h2 {
+    margin-bottom: 20px;
+}
+
+.app-brief .phone-image {
+    max-width: 350px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.app-brief .phone-image img {
+    width: 100%;
+}
+
+.app-brief .left-align {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.app-brief .left-align p {
+    display: block;
+    float: none;
+    margin-top: 50px;
+}
+
+.app-brief .left-align .feature-list {
+    margin-top: 40px;
+}
+
+.app-brief .left-align .feature-list li {
+    margin-bottom: 26px;
+}
+
+.app-brief .left-align .feature-list li i {
+    margin-right: 10px;
+    vertical-align: inherit;
+}
+
+
+/*---------------------------------------
+   SECTION:  INFO           
+-----------------------------------------*/
+
+.info {
+	display: none;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    background: #ffffff;
+}
+
+.info #results-container-map .imageClip {
+    width:60%;
+    height: auto;
+    overflow:hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.info #results-container-method {
+	padding-bottom: 30px;
+}
+
+.info .single-info {
+    padding-bottom: 60px;
+}
+
+.info .info-service .info-icon {
+    font-size: 80px;
+}
+
+.info .info-service h3 {
+    margin-top: 20px;
+}
+
+
+/*---------------------------------------
+   SECTION:  FOOTER                
+-----------------------------------------*/
+
+footer .contact-box {
+    margin-bottom: 78px;
+}
+
+footer .contact-box .contact-button {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    font-size: 30px;
+    line-height: 60px;
+    vertical-align: middle;
+    margin-top: -40px;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 0px 0px 3px #ffffff;
+            box-shadow: 0px 0px 0px 3px #ffffff;
+    -webkit-backface-visibility: hidden;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
+
+footer .contact-box .contact-button:hover {
+    color: #ffffff;
+}
+
+footer .contact-box .expanded-contact-form {
+    margin-top: 40px;
+    display: none;
+}
+
+footer .contact-box .expanded-contact-form .success,
+footer .contact-box .expanded-contact-form .error-contact {
+    display: none;
+}
+
+footer .contact-box .expanded-contact-form .input-box {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 50px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+footer .contact-box .expanded-contact-form .textarea-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+footer .contact-box .expanded-contact-form .textarea-box:active {
+    color: #000;
+}
+
+footer .social-icons {
+    margin-top: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 50px;
+}
+
+footer .social-icons li {
+    display: inline-block;
+    margin: 5px;
+}
+
+footer .social-icons li a {
+    font-size: 30px;
+    color: #c2c2c2;
+}
+
+footer .copyright {
+    color: #808080;
+    padding-top: 10px;
+    margin-bottom: 50px;
+}
